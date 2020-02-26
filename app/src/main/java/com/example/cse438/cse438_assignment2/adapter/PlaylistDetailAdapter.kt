@@ -3,10 +3,12 @@ package com.example.cse438.cse438_assignment2.adapter
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cse438.cse438_assignment2.R
+import com.example.cse438.cse438_assignment2.activities.DeleteActivity
 import com.example.cse438.cse438_assignment2.activities.DetailsActivity
 import com.example.cse438.cse438_assignment2.activities.PlaylistActivity
 import com.example.cse438.cse438_assignment2.data.Playlist
@@ -21,14 +23,14 @@ class PlaylistDetailViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     private val plGenre: TextView
     private val plDuration :TextView
     private val plRating : TextView
+    private val deleteButton : Button
     init{
-//        playlistName = itemView.findViewById(R.id.playlist_name)
-//        playlistDescription = itemView.findViewById(R.id.playlist_description)
         plTrackName = itemView.findViewById(R.id.pl_trackname)
         plArtist = itemView.findViewById(R.id.pl_artist)
         plGenre = itemView.findViewById(R.id.pl_genre)
         plDuration = itemView.findViewById(R.id.pl_duration)
         plRating = itemView.findViewById(R.id.pl_rating)
+        deleteButton = itemView.findViewById(R.id.delete_button)
     }
 
     fun bind(display: PlaylistDisplay){
@@ -37,6 +39,12 @@ class PlaylistDetailViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         plGenre.text = display.genre
         plDuration.text = display.duration.toString()
         plRating.text = display.rating.toString()
+        deleteButton.setOnClickListener{
+            val intent = Intent(it.getContext(), DeleteActivity::class.java)
+            intent.putExtra("trackid",display.track_id)
+            intent.putExtra("playlistid",display.playlist_id)
+            it.getContext().startActivity(intent)
+        }
     }
 
 }

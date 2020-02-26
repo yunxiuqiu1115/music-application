@@ -14,6 +14,14 @@
         android:layout_centerHorizontal="true"
         android:textAlignment="center" />
 
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:textSize="10dp"
+        android:layout_marginLeft="200dp"
+        android:text="REMOVE" />
+
     <TextView
         android:id="@+id/pl_artist"
         android:layout_width="wrap_content"

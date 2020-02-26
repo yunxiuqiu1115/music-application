@@ -17,7 +17,7 @@ class PlaylistContentViewModel(application: Application): AndroidViewModel(appli
     init{
         repository = PlaylistContentRepository(PlaylistRoomDatabase.getDatabase(application).songDetailDao())
         _playlistcontents = repository.allPlaylists
-        _playlistdetails = repository.search(1)
+        _playlistdetails = MutableLiveData()
     }
 
     fun getPlayListContents() : LiveData<List<PlaylistContent>>{
@@ -32,9 +32,11 @@ class PlaylistContentViewModel(application: Application): AndroidViewModel(appli
         repository.clear()
     }
 
-    fun search(id:Int) : LiveData<List<PlaylistDisplay>>{
-        Log.d("debuggg","debug viewmodel")
+    fun search(id:Int){
         _playlistdetails = repository.search(id)
-        return _playlistdetails
+    }
+
+    fun remove_song(trackid:Int,playlistid:Int){
+        repository.remove_song(trackid,playlistid)
     }
 }

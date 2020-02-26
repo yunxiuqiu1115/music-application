@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cse438.cse438_assignment2.R
 import com.example.cse438.cse438_assignment2.activities.ArchiveActivity
 import com.example.cse438.cse438_assignment2.activities.DetailsActivity
+import com.example.cse438.cse438_assignment2.activities.MainActivity
 import com.example.cse438.cse438_assignment2.activities.PlaylistViewModel
 import com.example.cse438.cse438_assignment2.data.*
 import com.squareup.picasso.Picasso
@@ -36,6 +37,7 @@ class DetailViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     private val trackRank:TextView
     private val trackGain:TextView
     private var addToPlayList : Button
+//    private var backButton : Button
     lateinit var viewModel : PlaylistViewModel
     private var Playlistnames:ArrayList<String> = ArrayList()
     private var Playlists:ArrayList<Playlist> = ArrayList()
@@ -49,6 +51,7 @@ class DetailViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         trackRank = itemView.findViewById(R.id.track_rank)
         trackGain = itemView.findViewById(R.id.track_gain)
         addToPlayList = itemView.findViewById(R.id.add_to_playlist)
+//        backButton = findViewById(R.id.back_button)
 
 
     }
@@ -71,30 +74,8 @@ class DetailViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
             intent.putExtra("artist",chartSong.artist.name)
             intent.putExtra("duration",chartSong.duration)
             it.getContext().startActivity(intent)
-//            viewModel = ViewModelProvider(activity).get(PlaylistViewModel::class.java)
-//            var adapter = ArrayAdapter<String>(activity,android.R.layout.simple_spinner_item,Playlistnames)
-//            val dialogView = LayoutInflater.from(it.getContext()).inflate(R.layout.dialog_addplaylist,null)
-//
-//            val mBuilder = AlertDialog.Builder(it.getContext())
-//                .setView(dialogView)
-//                .setTitle("Please choose the playlist you wanna add")
-//            val mAlertDialog = mBuilder.show()
-//            mAlertDialog.playlistSpinner.adapter = adapter
-//            viewModel!!._playLists.observe(activity, Observer{
-//                Playlists.clear()
-//                Playlists.addAll(it)
-//                Playlistnames.clear()
-//                for(p in Playlists){
-//                    Playlistnames.add(p.name_of_playlist)
-//                    adapter.notifyDataSetChanged()
-//                }
-//            })
-//            println("****************************************************debug")
-//            mAlertDialog.submitPlaylist.setOnClickListener{
-//
-//            }
-
         }
+
 
     }
 

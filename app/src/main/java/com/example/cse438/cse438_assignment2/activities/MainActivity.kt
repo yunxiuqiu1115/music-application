@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         val fragmentAdapter = MyPagerAdapter(supportFragmentManager)
         viewpager_main.adapter = fragmentAdapter
         tabs_main.setupWithViewPager(viewpager_main)
+        viewpager_main.setCurrentItem(intent!!.getIntExtra("tab",0),true)
         }
 
     class MyPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm){

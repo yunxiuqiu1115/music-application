@@ -1,6 +1,7 @@
 package com.example.cse438.cse438_assignment2.adapter
 
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -24,6 +25,16 @@ class PlaylistViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     }
 
     fun bind(playlist: Playlist){
+        val rate = playlist.rating
+        if(rate>=8){
+            playlistName.setTextColor(Color.parseColor("#F57A94"))
+        }
+        else if(rate>=5){
+            playlistName.setTextColor(Color.parseColor("#FDCC84"))
+        }
+        else{
+            playlistName.setTextColor(Color.parseColor("#84FDAC"))
+        }
         playlistName.text = playlist.name_of_playlist
         playlistDescription.text = playlist.description
 

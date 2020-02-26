@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:windowSoftInputMode="adjustResize">
-        <activity android:name=".activities.PlaylistActivity"></activity>
+        android:windowSoftInputMode="adjustPan">
+        <activity android:name=".activities.DeleteActivity"></activity>
+        <activity android:name=".activities.PlaylistActivity" />
         <activity android:name=".activities.ArchiveActivity" />
         <activity android:name=".activities.DetailsActivity" />
         <activity android:name=".activities.MainActivity">

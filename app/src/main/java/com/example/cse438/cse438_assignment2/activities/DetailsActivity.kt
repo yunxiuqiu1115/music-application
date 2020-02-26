@@ -1,5 +1,7 @@
 package com.example.cse438.cse438_assignment2.activities
 
+import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,13 +19,18 @@ import com.example.cse438.cse438_assignment2.data.Song
 import com.example.cse438.cse438_assignment2.data.SongDetail
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.fragment_home_page.*
+import retrofit2.http.Url
 
 class DetailsActivity : AppCompatActivity() {
     private lateinit var viewModel : SongViewModel
 //    private lateinit var searchButton : Button
 //    private lateinit var searchContent : TextView
     var detailList: ArrayList<SongDetail> = ArrayList()
-
+    var url = ""
+    lateinit var btnPause:Button
+    lateinit var btnPlay:Button
+    lateinit var backButton:Button
+    lateinit var mediaPlayer:MediaPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
@@ -36,14 +43,34 @@ class DetailsActivity : AppCompatActivity() {
         viewModel!!.songDetail.observe(this, Observer{
             detailList.clear()
             detailList.add(it)
+            url = it.preview
             adapter.notifyDataSetChanged()})
 
         viewModel.getSongById(trackId)
-    }
+        btnPlay = findViewById(R.id.btnPlay)
+        btnPause = findViewById(R.id.btnPause)
+        backButton = findViewById(R.id.back_button)
+        mediaPlayer = MediaPlayer()
+        mediaPlayer.setOnPreparedListener{
+            mediaPlayer.start()
+        }
+        mediaPlayer.setOnErrorListener(object : MediaPlayer.OnErrorListener{
+            override fun onError(p0:MediaPlayer?,p1:Int,p2:Int) : Boolean{
+                mediaPlayer.reset()
+                return false
+            }
+        })
+        btnPlay.setOnClickListener{
+            mediaPlayer.setDataSource(url)
+            mediaPlayer.prepareAsync()
+        }
+        btnPause.setOnClickListener{
+            mediaPlayer.reset()
+        }
+        backButton.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
-//    override fun onStart(){
-//        super.onStart()
-//
-//
-//    }
+    }
 }

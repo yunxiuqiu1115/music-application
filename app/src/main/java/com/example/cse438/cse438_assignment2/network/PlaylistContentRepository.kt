@@ -24,10 +24,14 @@ class PlaylistContentRepository(private val songDetailDao : SongDetailDao) {
     }
 
     fun search(id:Int):LiveData<List<PlaylistDisplay>>{
-        var list: LiveData<List<PlaylistDisplay>> = MutableLiveData()
-        CoroutineScope(Dispatchers.IO).launch{
-            list = songDetailDao.find_details(id)
-        }
+        var list:LiveData<List<PlaylistDisplay>>
+        list = songDetailDao.find_details(id)
         return list
+    }
+
+    fun remove_song(trackid:Int,playlistid:Int){
+        CoroutineScope(Dispatchers.IO).launch{
+            songDetailDao.remove_song(trackid,playlistid)
+        }
     }
 }
