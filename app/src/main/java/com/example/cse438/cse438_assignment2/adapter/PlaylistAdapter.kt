@@ -1,11 +1,14 @@
 package com.example.cse438.cse438_assignment2.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cse438.cse438_assignment2.R
+import com.example.cse438.cse438_assignment2.activities.DetailsActivity
+import com.example.cse438.cse438_assignment2.activities.PlaylistActivity
 import com.example.cse438.cse438_assignment2.data.Playlist
 import com.example.cse438.cse438_assignment2.data.Song
 import com.squareup.picasso.Picasso
@@ -23,6 +26,12 @@ class PlaylistViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     fun bind(playlist: Playlist){
         playlistName.text = playlist.name_of_playlist
         playlistDescription.text = playlist.description
+
+        playlistName.setOnClickListener{
+            val intent = Intent(it.getContext(), PlaylistActivity::class.java)
+            intent.putExtra("id",playlist.id)
+            it.getContext().startActivity(intent)
+        }
     }
 
 }

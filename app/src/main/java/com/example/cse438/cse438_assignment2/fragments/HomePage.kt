@@ -43,7 +43,7 @@ class HomePage : Fragment() {
         searchButton = search_button
         searchContent = keyword
         song_recycler_view.adapter = adapter
-        song_recycler_view.layoutManager = LinearLayoutManager(this.context)
+//        song_recycler_view.layoutManager = LinearLayoutManager(this.context)
         song_recycler_view.setLayoutManager(GridLayoutManager(this.context,2))
         song_recycler_view.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         viewModel = ViewModelProvider(this).get(SongViewModel::class.java)

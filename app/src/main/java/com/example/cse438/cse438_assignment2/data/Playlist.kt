@@ -10,9 +10,16 @@ data class Playlist (
     val name_of_playlist:String,
 
     @ColumnInfo(name="description")
-    val description:String
+    val description:String,
+
+    @ColumnInfo(name="rating")
+    val rating: Int,
+
+    @ColumnInfo(name="genre")
+    val genre:String
 )
 {
     @PrimaryKey(autoGenerate=true)
     var id:Int = 0
 }
+

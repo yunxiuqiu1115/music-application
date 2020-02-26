@@ -5,10 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities=arrayOf(Playlist::class),version=2)
+@Database(entities=arrayOf(Playlist::class,PlaylistContent::class),version=2)
 public abstract class PlaylistRoomDatabase : RoomDatabase() {
     abstract fun songDao():SongDao
-
+    abstract fun songDetailDao():SongDetailDao
     companion object{
         @Volatile
         private var INSTANCE: PlaylistRoomDatabase? = null

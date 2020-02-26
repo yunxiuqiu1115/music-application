@@ -1,11 +1,14 @@
 package com.example.cse438.cse438_assignment2.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cse438.cse438_assignment2.R
+import com.example.cse438.cse438_assignment2.activities.DetailsActivity
 import com.example.cse438.cse438_assignment2.data.Song
 import com.squareup.picasso.Picasso
 
@@ -23,6 +26,16 @@ class SongViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         albumName?.text = chartSong.title
         Picasso.get().load(chartSong.album.cover_medium).into(albumImage)
         albumImage.setOnClickListener{
+            /////////////////////////////
+            //Reminder                 //
+            //This part is newly added //
+            //If the app crashed       //
+            //Just remove them         //
+            /////////////////////////////
+
+            val intent = Intent(it.getContext(),DetailsActivity::class.java)
+            intent.putExtra("id",chartSong.id)
+            it.getContext().startActivity(intent)
         }
     }
 

@@ -2,6 +2,8 @@ package com.example.cse438.cse438_assignment2.network
 
 import androidx.lifecycle.MutableLiveData
 import com.example.cse438.cse438_assignment2.data.ChartPayload
+import com.example.cse438.cse438_assignment2.data.Song
+import com.example.cse438.cse438_assignment2.data.SongDetail
 import com.example.cse438.cse438_assignment2.data.TrackWrapper
 import com.example.cse438.trivia.network.ApiClient
 import kotlinx.coroutines.CoroutineScope
@@ -30,6 +32,20 @@ class SongRepository {
         CoroutineScope(Dispatchers.IO).launch{
             val response = service.getSongByKeyWord(q)
 
+            withContext(Dispatchers.Main){
+                try{
+                    if(response.isSuccessful){
+                        resBody.value = response.body()
+                    }
+                } catch(e:HttpException){
+                    println("Http error")
+                }
+            }
+        }
+    }
+    fun getSongById(resBody:MutableLiveData<SongDetail>, trackId:Int){
+        CoroutineScope(Dispatchers.IO).launch{
+            val response = service.getSongById(trackId)
             withContext(Dispatchers.Main){
                 try{
                     if(response.isSuccessful){
