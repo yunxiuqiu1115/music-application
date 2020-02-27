@@ -18,6 +18,7 @@ class DeleteActivity : AppCompatActivity() {
         val trackId = intent!!.getIntExtra("trackid",0)
         val playlistId = intent!!.getIntExtra("playlistid",0)
         viewModel = ViewModelProvider(this).get(PlaylistContentViewModel::class.java)
+        // Delete the song from the playlist
         viewModel.remove_song(trackId,playlistId)
         val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("tab",1)

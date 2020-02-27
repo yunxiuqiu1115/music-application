@@ -34,6 +34,7 @@ class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
+        // Get the id from previous click
         val trackId = intent!!.getIntExtra("id",0)
         var adapter = DetailAdapter(detailList)
         detail_recycler_view.adapter = adapter
@@ -45,11 +46,12 @@ class DetailsActivity : AppCompatActivity() {
             detailList.add(it)
             url = it.preview
             adapter.notifyDataSetChanged()})
-
+        // Get song's details from track API by its id
         viewModel.getSongById(trackId)
         btnPlay = findViewById(R.id.btnPlay)
         btnPause = findViewById(R.id.btnPause)
         backButton = findViewById(R.id.back_button)
+        // Make a player to hear the snippet
         mediaPlayer = MediaPlayer()
         mediaPlayer.setOnPreparedListener{
             mediaPlayer.start()
@@ -60,13 +62,16 @@ class DetailsActivity : AppCompatActivity() {
                 return false
             }
         })
+        // Playing music
         btnPlay.setOnClickListener{
             mediaPlayer.setDataSource(url)
             mediaPlayer.prepareAsync()
         }
+        // Pause music
         btnPause.setOnClickListener{
             mediaPlayer.reset()
         }
+        // Go back to main page
         backButton.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

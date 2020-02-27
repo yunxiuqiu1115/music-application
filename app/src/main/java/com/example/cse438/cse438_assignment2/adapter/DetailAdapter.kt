@@ -38,10 +38,7 @@ class DetailViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     private val trackRank:TextView
     private val trackGain:TextView
     private var addToPlayList : Button
-//    private var backButton : Button
-    lateinit var viewModel : PlaylistViewModel
-    private var Playlistnames:ArrayList<String> = ArrayList()
-    private var Playlists:ArrayList<Playlist> = ArrayList()
+
     init{
         trackName = itemView.findViewById(R.id.track_name)
         trackImage = itemView.findViewById(R.id.track_image)
@@ -53,8 +50,6 @@ class DetailViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         trackRank = itemView.findViewById(R.id.track_rank)
         trackGain = itemView.findViewById(R.id.track_gain)
         addToPlayList = itemView.findViewById(R.id.add_to_playlist)
-//        backButton = findViewById(R.id.back_button)
-
 
     }
 
@@ -78,8 +73,6 @@ class DetailViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
             intent.putExtra("duration",chartSong.duration)
             it.getContext().startActivity(intent)
         }
-
-
     }
 
 }

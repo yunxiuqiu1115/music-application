@@ -25,14 +25,8 @@ class SongViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     fun bind(chartSong: Song){
         albumName?.text = chartSong.title
         Picasso.get().load(chartSong.album.cover_medium).into(albumImage)
+        // Click an image and you can see its details
         albumImage.setOnClickListener{
-            /////////////////////////////
-            //Reminder                 //
-            //This part is newly added //
-            //If the app crashed       //
-            //Just remove them         //
-            /////////////////////////////
-
             val intent = Intent(it.getContext(),DetailsActivity::class.java)
             intent.putExtra("id",chartSong.id)
             it.getContext().startActivity(intent)

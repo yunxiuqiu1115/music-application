@@ -10,23 +10,19 @@ import com.example.cse438.cse438_assignment2.data.TrackWrapper
 import com.example.cse438.cse438_assignment2.network.SongRepository
 
 class SongViewModel(application: Application): AndroidViewModel(application) {
-    public var chartList: MutableLiveData<TrackWrapper> = MutableLiveData()
-    public var songRepository : SongRepository = SongRepository()
-
-
-    //NewlyAdded
-    public var searchList: MutableLiveData<ChartPayload> = MutableLiveData()
-
-    public var songDetail: MutableLiveData<SongDetail> = MutableLiveData()
-
+    var chartList: MutableLiveData<TrackWrapper> = MutableLiveData()
+    var songRepository : SongRepository = SongRepository()
+    var searchList: MutableLiveData<ChartPayload> = MutableLiveData()
+    var songDetail: MutableLiveData<SongDetail> = MutableLiveData()
+    // Get the songs from the chart
     fun getChart(){
         songRepository.getChart(chartList)
     }
-    //NewlyAdded
+    // Search a song by keyword
     fun getSongByKeyWord(q:String){
         songRepository.getSongByKeyWord(searchList,q)
     }
-
+    // Get the details of a song by its id
     fun getSongById(trackId:Int){
         songRepository.getSongById(songDetail,trackId)
     }

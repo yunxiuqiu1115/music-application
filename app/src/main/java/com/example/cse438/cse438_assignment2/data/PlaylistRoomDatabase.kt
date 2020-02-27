@@ -12,7 +12,6 @@ public abstract class PlaylistRoomDatabase : RoomDatabase() {
     companion object{
         @Volatile
         private var INSTANCE: PlaylistRoomDatabase? = null
-
         fun getDatabase(context:Context) : PlaylistRoomDatabase{
             val temp = INSTANCE
             if(temp!=null){

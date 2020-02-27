@@ -27,4 +27,10 @@ interface SongDetailDao {
     "AND playlist_id =:playlistid")
     fun remove_song(trackid:Int,playlistid:Int)
 
+    @Query("SELECT COUNT(*) AS count,track_id,track_name "+
+    "FROM playlistcontent "+
+    "GROUP BY track_id "+
+    "ORDER BY COUNT(*) DESC")
+    fun popularsong() : LiveData<List<PopularSong>>
+
 }

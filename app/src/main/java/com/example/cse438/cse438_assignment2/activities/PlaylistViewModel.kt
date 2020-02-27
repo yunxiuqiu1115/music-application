@@ -18,15 +18,15 @@ class PlaylistViewModel(application: Application): AndroidViewModel(application)
         repository = PlaylistRepository(PlaylistRoomDatabase.getDatabase(application).songDao())
         _playLists = repository.allPlaylists
     }
-
+    // Get all the playlists
     fun getPlayLists() : LiveData<List<Playlist>>{
         return _playLists
     }
-
+    // Insert a playlist
     fun insert(playlist:Playlist){
         repository.insert(playlist)
     }
-
+    // Delete all the playlist
     fun deleteAll(){
         repository.clear()
     }

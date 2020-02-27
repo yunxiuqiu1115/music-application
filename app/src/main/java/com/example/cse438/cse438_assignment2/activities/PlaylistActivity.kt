@@ -23,14 +23,13 @@ class PlaylistActivity : AppCompatActivity() {
     var results:ArrayList<PlaylistDisplay> = ArrayList()
     var test:ArrayList<PlaylistContent> = ArrayList()
     lateinit var viewModel : PlaylistContentViewModel
-    lateinit var viewModel2 : PlaylistContentViewModel
     lateinit var backButton: Button
     var playlistId  = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_playlist)
+        // Get id from previous click
         playlistId = intent!!.getIntExtra("id",1)
-        Log.d("debuggg ","id "+playlistId)
         backButton = back_button2
     }
     override fun onStart(){
@@ -40,12 +39,13 @@ class PlaylistActivity : AppCompatActivity() {
         playlistdetail_recycler_view.layoutManager = LinearLayoutManager(this)
         playlistdetail_recycler_view.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         viewModel = ViewModelProvider(this).get(PlaylistContentViewModel::class.java)
+        // Search the contents of a playlist in a join query via its id
         viewModel.search(playlistId)
         viewModel!!._playlistdetails.observe(this, Observer{
             results.clear()
             results.addAll(it)
             adapter.notifyDataSetChanged()})
-
+        // Go back to front page
         backButton.setOnClickListener{
             val intent = Intent(this,MainActivity::class.java)
             intent.putExtra("tab",1)

@@ -47,23 +47,25 @@ class PlaylistFragment : Fragment() {
         playlist_recycler_view.layoutManager = LinearLayoutManager(this.context)
         playlist_recycler_view.addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
         viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
-
+        // Adding a new playlist
         view.add_button.setOnClickListener{
             val dialogView = LayoutInflater.from(this.context).inflate(R.layout.enter_playlist,null)
             val mBuilder = AlertDialog.Builder(this.context)
                 .setView(dialogView)
                 .setTitle("Enter the new playlist")
             val mAlertDialog = mBuilder.show()
-
+            // Finish adding a playlist
             mAlertDialog.submitPlaylist.setOnClickListener{
                 val plName = dialogView.pl_name.text.toString()
                 val plDes = dialogView.pl_description.text.toString()
                 val plRate = dialogView.pl_rate.text.toString().toIntOrNull()
                 val plGenre = dialogView.pl_genre.text.toString()
+                // Sanitize the input
                 if(plName==null||plName==""||plDes==""||plDes==null||plGenre==null||plGenre==""){
                     val myToast = Toast.makeText(it.context,"Please fill all the blanks",Toast.LENGTH_SHORT)
                     myToast.show()
                 }
+                // Rate should be within the range
                 else if(plRate==null||plRate<0||plRate>10){
                     val myToast = Toast.makeText(it.context,"Please enter valid rating",Toast.LENGTH_SHORT)
                     myToast.show()
@@ -75,7 +77,7 @@ class PlaylistFragment : Fragment() {
                         plRate,
                         plGenre
                     )
-
+                // Insert the playlist
                 viewModel!!._playLists.observe(this,Observer{
                     PlayList.clear()
                     PlayList.addAll(it)
@@ -90,6 +92,7 @@ class PlaylistFragment : Fragment() {
                 }
             }
         }
+        // Clear all the playlists
         view.clear_button.setOnClickListener{
             viewModel!!._playLists.observe(this,Observer{
                 PlayList.clear()

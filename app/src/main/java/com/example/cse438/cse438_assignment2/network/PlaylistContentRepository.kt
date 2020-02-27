@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class PlaylistContentRepository(private val songDetailDao : SongDetailDao) {
     val allPlaylists: LiveData<List<PlaylistContent>> = songDetailDao.getAllContents()
-
+    val popularlist: LiveData<List<PopularSong>> = songDetailDao.popularsong()
     fun insert(content: PlaylistContent){
         CoroutineScope(Dispatchers.IO).launch{
             songDetailDao.insert(content)
@@ -34,4 +34,5 @@ class PlaylistContentRepository(private val songDetailDao : SongDetailDao) {
             songDetailDao.remove_song(trackid,playlistid)
         }
     }
+
 }

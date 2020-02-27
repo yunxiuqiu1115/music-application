@@ -39,6 +39,7 @@ class PlaylistDetailViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         plGenre.text = display.genre
         plDuration.text = display.duration.toString()
         plRating.text = display.rating.toString()
+        // Remove a song from a playlist
         deleteButton.setOnClickListener{
             val intent = Intent(it.getContext(), DeleteActivity::class.java)
             intent.putExtra("trackid",display.track_id)

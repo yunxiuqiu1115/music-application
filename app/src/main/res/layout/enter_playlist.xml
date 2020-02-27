@@ -8,24 +8,24 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="130dp"
-        android:hint="Name of Playlist" />
+        android:hint="@string/name" />
 
     <EditText
         android:id="@+id/pl_description"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:hint="Description of Playlist" />
+        android:hint="@string/description" />
 
     <EditText
         android:id="@+id/pl_rate"
-        android:hint="Rating(0-10)"
+        android:hint="@string/rate"
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/pl_genre"
-        android:hint="Genre"
+        android:hint="@string/genre"
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -38,7 +38,7 @@
 
         <Button
             android:id="@+id/submitPlaylist"
-            android:text="Submit"
+            android:text="@string/submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>

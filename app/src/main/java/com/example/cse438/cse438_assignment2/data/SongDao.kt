@@ -15,7 +15,4 @@ interface SongDao {
 
     @Insert
     fun insert(playlist:Playlist)
-
-//    @Query("SELECT * FROM playlistcontent")
-//    fun getPlaylistContents(): LiveData<List<PlaylistContent>>
 }

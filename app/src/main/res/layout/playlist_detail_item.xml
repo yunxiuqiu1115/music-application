@@ -18,9 +18,9 @@
         android:id="@+id/delete_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:textSize="10dp"
+        android:textSize="10sp"
         android:layout_marginLeft="200dp"
-        android:text="REMOVE" />
+        android:text="@string/remove" />
 
     <TextView
         android:id="@+id/pl_artist"

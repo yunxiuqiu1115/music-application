@@ -26,18 +26,21 @@ class PlaylistViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
 
     fun bind(playlist: Playlist){
         val rate = playlist.rating
+        // Highly rated ones
         if(rate>=8){
             playlistName.setTextColor(Color.parseColor("#F57A94"))
         }
+        // Fairly rated ones
         else if(rate>=5){
             playlistName.setTextColor(Color.parseColor("#FDCC84"))
         }
+        // Trashes
         else{
             playlistName.setTextColor(Color.parseColor("#84FDAC"))
         }
         playlistName.text = playlist.name_of_playlist
         playlistDescription.text = playlist.description
-
+        // See the details of playlists
         playlistName.setOnClickListener{
             val intent = Intent(it.getContext(), PlaylistActivity::class.java)
             intent.putExtra("id",playlist.id)

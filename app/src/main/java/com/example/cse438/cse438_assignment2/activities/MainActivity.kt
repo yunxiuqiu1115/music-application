@@ -16,6 +16,7 @@ import com.example.cse438.cse438_assignment2.adapter.SongGridAdapter
 import com.example.cse438.cse438_assignment2.data.Song
 import com.example.cse438.cse438_assignment2.fragments.HomePage
 import com.example.cse438.cse438_assignment2.fragments.PlaylistFragment
+import com.example.cse438.cse438_assignment2.fragments.PopularsongFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -31,17 +32,19 @@ class MainActivity : AppCompatActivity() {
 
     class MyPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm){
         override fun getCount() : Int{
-            return 2
+            return 3
         }
-
         override fun getItem(position:Int): Fragment {
 
             return when (position){
                 0 -> {
                     HomePage()
                 }
-                else -> {
+                1 ->{
                     PlaylistFragment()
+                }
+                else -> {
+                    PopularsongFragment()
                 }
             }
         }
@@ -49,7 +52,8 @@ class MainActivity : AppCompatActivity() {
         override fun getPageTitle(position: Int) : CharSequence{
             return when (position){
                 0 -> "Homepage"
-                else -> "Playlist"
+                1 -> "Playlist"
+                else -> "Popular Song"
             }
         }
 
