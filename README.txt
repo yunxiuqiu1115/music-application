@@ -18,11 +18,14 @@ A description of the creative portion of the assignment
 * Describe your feature
 1.When user click to see the detail of one track, he can listen to a snippet of this song.
 2.The playlist's color will be different according to rating of each playlist.
+3.User can see songs in the third tab ordered by archived times.
 
 * Why did you choose this feature?
 1.I think it's reasonable to provide this function because user may want to hear about the song before they ever decide to put this song in their playlist.
 2.It will be more intuitive for the user to see their preference for every playlist. For example sometime they may just want to listen to the high-rated music, but sometimes they may turn to the bad ones to see whether they will change their opinion.
+3.Because it can help the user to see which songs their may like the best in a more effective ways.(Supposed that if you add a song to many of your playlists,chances are that you really enjoy this song)
 
 * How did you implement it?
 1.For this feature I mainly use MediaPlayer function to implement the function.
 2.For the second feature I write a function in binding method to decide which color the playlist should use.
+3.For the third feature I mainly use the count and group by and order by in SQL query.
