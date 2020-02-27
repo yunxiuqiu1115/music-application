@@ -30,6 +30,7 @@ class DetailViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.detail_item,parent,false)){
     private val trackName: TextView
     private val trackImage: ImageView
+    private val artistName : TextView
     private val albumName: TextView
     private val trackPosition: TextView
     private val trackLength: TextView
@@ -44,6 +45,7 @@ class DetailViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     init{
         trackName = itemView.findViewById(R.id.track_name)
         trackImage = itemView.findViewById(R.id.track_image)
+        artistName = itemView.findViewById(R.id.artist_name)
         albumName = itemView.findViewById(R.id.album_name)
         trackPosition = itemView.findViewById(R.id.track_position)
         trackLength = itemView.findViewById(R.id.track_length)
@@ -59,6 +61,7 @@ class DetailViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     fun bind(chartSong: SongDetail){
         trackName?.text = chartSong.title
         Picasso.get().load(chartSong.album.cover_medium).into(trackImage)
+        artistName.text = chartSong.artist.name
         albumName?.text = chartSong.album.title
         trackPosition?.text = chartSong.track_position.toString()
         trackLength?.text = chartSong.duration.toString()
