@@ -4,8 +4,10 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -49,14 +51,21 @@ class ArchiveActivity : AppCompatActivity() {
             })
             viewModel.getPlayLists()
             mAlertDialog.add_into_playlist.setOnClickListener{
-                val track_id = intent!!.getIntExtra("trackId",0)
-                val track_name = intent!!.getStringExtra("trackName")
-                val artist = intent!!.getStringExtra("artist")
-                val duration = intent!!.getIntExtra("duration",0)
-                val playlist_id = Playlists[dialogView.playlistSpinner.selectedItemPosition].id
-                val c = PlaylistContent(track_id,track_name,artist,duration,playlist_id)
-                // Insert into database
-                viewModel2.insert(c)
+                // Sanitize the input -> If there is no playlist then reject inserting
+                if (Playlists.size==0){
+                    val myToast = Toast.makeText(it.context,"Please first create a playlist",Toast.LENGTH_SHORT)
+                    myToast.show()
+                }
+                else{
+                    val track_id = intent!!.getIntExtra("trackId",0)
+                    val track_name = intent!!.getStringExtra("trackName")
+                    val artist = intent!!.getStringExtra("artist")
+                    val duration = intent!!.getIntExtra("duration",0)
+                    val playlist_id = Playlists[dialogView.playlistSpinner.selectedItemPosition].id
+                    val c = PlaylistContent(track_id,track_name,artist,duration,playlist_id)
+                    // Insert into database
+                    viewModel2.insert(c)
+                }
                 mAlertDialog.dismiss()
                 val intent = Intent(this,MainActivity::class.java)
                 startActivity(intent)

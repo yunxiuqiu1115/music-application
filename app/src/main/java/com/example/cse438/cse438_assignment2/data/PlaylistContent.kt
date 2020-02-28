@@ -1,9 +1,13 @@
 package com.example.cse438.cse438_assignment2.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity(tableName="playlistcontent")
+@Entity(tableName="playlistcontent",foreignKeys=arrayOf(ForeignKey(entity = Playlist::class,
+    parentColumns = arrayOf("id"),
+    childColumns = arrayOf("playlist_id"),
+    onDelete = ForeignKey.CASCADE)))
 data class PlaylistContent (
 
     @ColumnInfo(name="track_id")
@@ -21,6 +25,7 @@ data class PlaylistContent (
     @ColumnInfo(name="playlist_id")
     val playlist_id:Int
 )
+
 {
     @PrimaryKey(autoGenerate=true)
     var id:Int = 0

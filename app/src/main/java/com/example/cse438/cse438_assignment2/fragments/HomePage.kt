@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -56,17 +57,25 @@ class HomePage : Fragment() {
         viewModel.getChart()
 
         searchButton.setOnClickListener{
-            var adapter2 = SongGridAdapter(searchList)
-            song_recycler_view.adapter = adapter2
-            song_recycler_view.layoutManager = LinearLayoutManager(this.context)
-            song_recycler_view.setLayoutManager(GridLayoutManager(this.context,2))
-            song_recycler_view.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-            viewModel!!.searchList.observe(this,Observer{
-                searchList.clear()
-                searchList.addAll(it.data)
-                adapter2.notifyDataSetChanged()
-            })
-            viewModel.getSongByKeyWord(searchContent.text.toString())
+            // Vanitize the input: search keyword should not be null
+            val searchcontent = searchContent.text.toString()
+            if(searchcontent==null||searchcontent==""){
+                val myToast = Toast.makeText(it.context,"Please enter the search keyword",Toast.LENGTH_SHORT)
+                myToast.show()
+            }
+            else{
+                var adapter2 = SongGridAdapter(searchList)
+                song_recycler_view.adapter = adapter2
+                song_recycler_view.layoutManager = LinearLayoutManager(this.context)
+                song_recycler_view.setLayoutManager(GridLayoutManager(this.context,2))
+                song_recycler_view.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+                viewModel!!.searchList.observe(this,Observer{
+                    searchList.clear()
+                    searchList.addAll(it.data)
+                    adapter2.notifyDataSetChanged()
+                })
+                viewModel.getSongByKeyWord(searchContent.text.toString())
+            }
         }
 
      }
