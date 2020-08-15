@@ -16,7 +16,9 @@ interface SongDetailDao {
     @Insert
     fun insert(content:PlaylistContent)
 
-    @Query("SELECT playlistcontent.track_name, playlistcontent.track_id, playlistcontent.playlist_id, playlistcontent.artist, playlists.genre, playlistcontent.duration, playlists.rating "+
+    @Query("SELECT playlistcontent.track_name, playlistcontent.track_id, " +
+            "playlistcontent.playlist_id, playlistcontent.artist, playlists.genre, " +
+            "playlistcontent.duration, playlists.rating "+
     "FROM playlists INNER JOIN playlistcontent " +
     "ON playlists.id = playlistcontent.playlist_id " +
     "And playlists.id =:playlistId")

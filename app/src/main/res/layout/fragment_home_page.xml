@@ -30,6 +30,7 @@
             android:id="@+id/search_button"
             android:layout_width="80dp"
             android:layout_height="39dp"
+            android:background="@drawable/rounded_button"
             android:text="@string/search"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/keyword" />
