@@ -7,11 +7,12 @@
 
     <TextView
         android:id="@+id/track_name"
+        android:fontFamily="@font/muli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="0dp"
         android:layout_centerHorizontal="true"
-        android:textSize="28sp"
+        android:textSize="30sp"
         android:textAlignment="center" />
 
     <ImageView
@@ -19,37 +20,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:background="@drawable/round_outline"
         android:layout_below="@+id/track_name"
         android:layout_centerHorizontal="true"
         android:textAlignment="center" />
 
     <TextView
         android:id="@+id/artist_name"
+        android:fontFamily="@font/muli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/track_image"
         android:layout_marginTop="12dp"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:layout_centerHorizontal="true"
         android:textAlignment="center" />
 
     <TextView
         android:id="@+id/album_name"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/muli"
         android:layout_height="wrap_content"
         android:layout_below="@+id/track_image"
         android:layout_marginTop="12dp"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:layout_centerHorizontal="true"
         android:textAlignment="center" />
 
     <TextView
         android:id="@+id/track_position"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/muli"
         android:layout_height="wrap_content"
         android:layout_below="@+id/album_name"
         android:layout_marginTop="12dp"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:layout_centerHorizontal="true"
         android:textAlignment="center" />
 
@@ -57,9 +62,10 @@
         android:id="@+id/track_length"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/muli"
         android:layout_below="@+id/track_position"
         android:layout_marginTop="12dp"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:layout_centerHorizontal="true"
         android:textAlignment="center" />
 
@@ -67,9 +73,10 @@
         android:id="@+id/release_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/muli"
         android:layout_below="@+id/track_length"
         android:layout_marginTop="12dp"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:layout_centerHorizontal="true"
         android:textAlignment="center" />
 
@@ -77,19 +84,21 @@
         android:id="@+id/track_rank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/muli"
         android:layout_below="@+id/release_date"
         android:layout_marginTop="12dp"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:layout_centerHorizontal="true"
         android:textAlignment="center" />
 
     <TextView
         android:id="@+id/track_gain"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/muli"
         android:layout_height="wrap_content"
         android:layout_below="@+id/track_rank"
         android:layout_marginTop="12dp"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:layout_centerHorizontal="true"
         android:textAlignment="center" />
 
@@ -97,6 +106,9 @@
     <Button
         android:id="@+id/add_to_playlist"
         android:text="@string/submit"
+        android:background="@drawable/rounded_button2"
+        android:fontFamily="@font/muli"
+        android:textColor="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

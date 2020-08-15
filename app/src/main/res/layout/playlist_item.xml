@@ -11,11 +11,13 @@
         android:layout_marginTop="12dp"
         android:textSize="28sp"
         android:textColor="@color/colorPrimary"
+        android:fontFamily="@font/muli"
         android:layout_centerHorizontal="true"
         android:textAlignment="center" />
 
     <TextView
         android:id="@+id/playlist_description"
+        android:fontFamily="@font/muli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/playlist_name"
